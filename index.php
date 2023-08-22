@@ -51,18 +51,32 @@
     */
     
 
-    if($verify == 'on' || $voteNumber != null) {
+    if ($verify == 'on' && $voteNumber !== null) {
         $filteredHotels = [];
-
         foreach($hotels as $hotel) {
-            if(($hotel['parking'] === true && $verify == 'on') || ($hotel['vote'] >= $voteNumber)) {
+            if($hotel['parking'] == true && $hotel['vote'] >= $voteNumber) {
+                $filteredHotels[] = $hotel;
+            }
+        }
+    } elseif ($verify == 'on') {
+        $filteredHotels = [];
+        foreach($hotels as $hotel) {
+            if($hotel['parking'] == true) {
+                $filteredHotels[] = $hotel;
+            }
+        }
+    } elseif ($voteNumber !== null) {
+        $filteredHotels = [];
+        foreach($hotels as $hotel) {
+            if($hotel['vote'] >= $voteNumber) {
                 $filteredHotels[] = $hotel;
             }
         }
     }
-    else if($verify == null || $voteNumber == null) {
+    else {
         $filteredHotels = $hotels;
     }
+
 
 ?>
 
