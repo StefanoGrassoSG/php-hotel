@@ -52,25 +52,9 @@
 </head>
 <body>
     <div class="text-center my-3">
-        <h1>
+        <h1 class="my-3">
             Hotel Table
         </h1>
-
-        <div>
-            <?php
-            foreach ($hotels as $hotel) {
-            ?> 
-                <?php
-                foreach ($hotel as $value) {
-                ?>
-                    <?php echo $value ?>
-                <?php        
-                }
-                ?>
-            <?php
-            } 
-            ?>
-        </div>
 
         <table class="table">
             <thead>
@@ -86,10 +70,10 @@
                 foreach ($hotels as $hotel) {
                 ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td scope="row"><?php echo $hotel['name'] ?></td>
+                        <td><?php echo $hotel['description'] ?></td>
+                        <td><?php echo $hotel['vote'] ?></td>
+                        <td><?php echo $hotel['distance_to_center'] . 'km' ?></td>
                     </tr>
                 <?php    
                 }
