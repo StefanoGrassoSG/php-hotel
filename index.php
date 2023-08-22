@@ -41,6 +41,7 @@
     ];
 
     $verify = $_GET['true'];
+    $voteNumber = $_GET['vote'];
 
     /*if ($verify == 'on') {
         $hotels = array_filter($hotels, function ($hotel) {
@@ -50,16 +51,16 @@
     */
     
 
-    if($verify == 'on') {
+    if($verify == 'on' || $voteNumber != null) {
         $filteredHotels = [];
 
         foreach($hotels as $hotel) {
-            if($hotel['parking'] === true) {
+            if(($hotel['parking'] === true && $verify == 'on') || ($hotel['vote'] >= $voteNumber)) {
                 $filteredHotels[] = $hotel;
             }
         }
     }
-    else {
+    else if($verify == null || $voteNumber == null) {
         $filteredHotels = $hotels;
     }
 
@@ -82,6 +83,10 @@
         <form action="" method="get">
             <input id="parking" type="checkbox" name="true">
             <label for="parking">Con Parcheggio</label>
+
+            <input id="vote" type="number" min="1" max="5" name="vote">
+            <label for="vote">Seleziona voto minimo hotel</label>
+            
             <input type="submit" value="cerca">
         </form>
 
