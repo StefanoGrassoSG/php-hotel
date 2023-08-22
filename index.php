@@ -60,11 +60,42 @@
             <?php
             foreach ($hotels as $hotel) {
             ?> 
-                <?php var_dump($hotel)  ?>
+                <?php
+                foreach ($hotel as $value) {
+                ?>
+                    <?php echo $value ?>
+                <?php        
+                }
+                ?>
             <?php
             } 
             ?>
         </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Vote</th>
+                    <th scope="col">Distance to center</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($hotels as $hotel) {
+                ?>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                <?php    
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
