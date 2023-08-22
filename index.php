@@ -40,6 +40,29 @@
 
     ];
 
+    $verify = $_GET['true'];
+
+    /*if ($verify == 'on') {
+        $hotels = array_filter($hotels, function ($hotel) {
+            return $hotel['parking'] === true;
+        });
+    }
+    */
+    
+
+    if($verify == 'on') {
+        $filteredHotels = [];
+
+        foreach($hotels as $hotel) {
+            if($hotel['parking'] === true) {
+                $filteredHotels[] = $hotel;
+            }
+        }
+    }
+    else {
+        $filteredHotels = $hotels;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +97,7 @@
             </thead>
             <tbody>
                 <?php
-                foreach ($hotels as $hotel) {
+                foreach ($filteredHotels as $hotel) {
                 ?>
                     <tr>
                         <td scope="row"><?php echo $hotel['name'] ?></td>
