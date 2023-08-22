@@ -56,11 +56,18 @@
             Hotel Table
         </h1>
 
+        <form action="" method="get">
+            <input id="parking" type="checkbox" name="true">
+            <label for="parking">Con Parcheggio</label>
+            <input type="submit" value="cerca">
+        </form>
+
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Parking</th>
                     <th scope="col">Vote</th>
                     <th scope="col">Distance to center</th>
                 </tr>
@@ -72,8 +79,9 @@
                     <tr>
                         <td scope="row"><?php echo $hotel['name'] ?></td>
                         <td><?php echo $hotel['description'] ?></td>
+                        <td><?php echo $hotel['parking'] ? 'Yes' : 'No'; ?></td>
                         <td><?php echo $hotel['vote'] ?></td>
-                        <td><?php echo $hotel['distance_to_center'] . 'km' ?></td>
+                        <td><?php echo $hotel['distance_to_center']. ' km' ?></td>
                     </tr>
                 <?php    
                 }
